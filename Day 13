@@ -1,0 +1,25 @@
+class Solution:
+    def getRow(self, rowIndex: int) -> List[int]:
+        # deal with edge cases explicitely
+        if rowIndex == 0:
+            return [1]
+        if rowIndex == 1:
+            return [1, 1]
+        
+        # there will be two arrays: prev and cur
+        # representing the previous row from which we construct the current one
+        prev = [1, 1]
+        for i in range(1, rowIndex+1):
+            # initialise current with 1 as seen in the animation as well
+            cur = [1]
+            
+            # looping through the interior points and build them by summing neighbours
+            for j in range(1,i):
+                cur.append(prev[j-1]+prev[j])
+                
+            # finishing off this row with another one
+            cur.append(1)
+            
+            prev = cur[:]
+        
+        return prev
