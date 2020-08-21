@@ -1,0 +1,10 @@
+class Solution:
+    def sortArrayByParity(self, A: List[int]) -> List[int]:
+        result_list_Even = []
+        result_List_Odd = []
+        for element in A:
+            if element % 2 == 0:
+                result_list_Even.append(element)
+            else:
+                result_List_Odd.append(element)
+        return result_list_Even + result_List_Odd
